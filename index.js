@@ -1,0 +1,21 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
+import { format } from 'prettier';
+
+const re = /<script type="module">((.|\r|\n)+)<\/script>/;
+
+const inDir = '../three.js/examples';
+const outDir = './output';
+
+const files = fs.readdirSync(inDir);
+
+for (const file of files) {
+  if (!file.endsWith('.html') || file === 'index.html' || file === 'webgl_multiple_elements_text.html') continue;
+
+  console.log(file);
+  const fileContents = fs.readFileSync(path.join(inDir, file), { encoding: 'utf-8' });
+  const results = re.exec(fileContents);
+  const formattedFile = format(results[1], { parser: 'babel' });
+  fs.writeFileSync(path.join(outDir, file.replace('.html', '.ts')), formattedFile);
+}
