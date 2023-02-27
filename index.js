@@ -10,6 +10,8 @@ const outDir = './output';
 
 const files = fs.readdirSync(inDir);
 
+let index = 0;
+
 for (const file of files) {
   if (!file.endsWith('.html') || file === 'index.html' || file === 'webgl_multiple_elements_text.html') continue;
 
@@ -18,4 +20,8 @@ for (const file of files) {
   const results = re.exec(fileContents);
   const formattedFile = format(results[1], { parser: 'babel' });
   fs.writeFileSync(path.join(outDir, file.replace('.html', '.ts')), formattedFile);
+
+  index++;
+
+  if (index > 0) break;
 }
