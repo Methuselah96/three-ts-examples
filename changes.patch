@@ -1,0 +1,25 @@
+diff --git a/examples/css2d_label.ts b/examples/css2d_label.ts
+index f4fa083..787f584 100644
+--- a/examples/css2d_label.ts
++++ b/examples/css2d_label.ts
+@@ -10,7 +10,10 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
+ 
+ let gui;
+ 
+-let camera, scene, renderer, labelRenderer;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer,
++  labelRenderer: CSS2DRenderer;
+ 
+ const layers = {
+   "Toggle Name": function () {
+@@ -31,7 +34,7 @@ const layers = {
+ const clock = new THREE.Clock();
+ const textureLoader = new THREE.TextureLoader();
+ 
+-let moon;
++let moon: THREE.Mesh;
+ 
+ init();
+ animate();
