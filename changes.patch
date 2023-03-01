@@ -3,23 +3,169 @@ index f4fa083..787f584 100644
 --- a/examples/css2d_label.ts
 +++ b/examples/css2d_label.ts
 @@ -10,7 +10,10 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
- 
+
  let gui;
- 
+
 -let camera, scene, renderer, labelRenderer;
 +let camera: THREE.PerspectiveCamera,
 +  scene: THREE.Scene,
 +  renderer: THREE.WebGLRenderer,
 +  labelRenderer: CSS2DRenderer;
- 
+
  const layers = {
    "Toggle Name": function () {
 @@ -31,7 +34,7 @@ const layers = {
  const clock = new THREE.Clock();
  const textureLoader = new THREE.TextureLoader();
- 
+
 -let moon;
 +let moon: THREE.Mesh;
- 
+
  init();
  animate();
+diff --git a/examples/css3d_molecules.ts b/examples/css3d_molecules.ts
+index dd8351d..3f7dc11 100644
+--- a/examples/css3d_molecules.ts
++++ b/examples/css3d_molecules.ts
+@@ -9,11 +9,13 @@ import {
+ } from "three/addons/renderers/CSS3DRenderer.js";
+ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
+
+-let camera, scene, renderer;
+-let controls;
+-let root;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: CSS3DRenderer;
++let controls: TrackballControls;
++let root: THREE.Object3D;
+
+-const objects = [];
++const objects: Array<CSS3DObject | CSS3DSprite> = [];
+ const tmpVec1 = new THREE.Vector3();
+ const tmpVec2 = new THREE.Vector3();
+ const tmpVec3 = new THREE.Vector3();
+@@ -53,7 +55,7 @@ const params = {
+ };
+
+ const loader = new PDBLoader();
+-const colorSpriteMap = {};
++const colorSpriteMap: { [element: string]: string | undefined } = {};
+ const baseSprite = document.createElement("img");
+
+ init();
+@@ -77,7 +79,7 @@ function init() {
+
+   renderer = new CSS3DRenderer();
+   renderer.setSize(window.innerWidth, window.innerHeight);
+-  document.getElementById("container").appendChild(renderer.domElement);
++  document.getElementById("container")!.appendChild(renderer.domElement);
+
+   //
+
+@@ -105,7 +107,7 @@ function init() {
+   gui.open();
+ }
+
+-function changeVizType(value) {
++function changeVizType(value: number) {
+   if (value === 0) showAtoms();
+   else if (value === 1) showBonds();
+   else showAtomsBonds();
+@@ -157,7 +159,12 @@ function showAtomsBonds() {
+
+ //
+
+-function colorify(ctx, width, height, color) {
++function colorify(
++  ctx: CanvasRenderingContext2D,
++  width: number,
++  height: number,
++  color: THREE.Color
++) {
+   const r = color.r,
+     g = color.g,
+     b = color.b;
+@@ -174,7 +181,7 @@ function colorify(ctx, width, height, color) {
+   ctx.putImageData(imageData, 0, 0);
+ }
+
+-function imageToCanvas(image) {
++function imageToCanvas(image: HTMLImageElement) {
+   const width = image.width;
+   const height = image.height;
+
+@@ -183,7 +190,7 @@ function imageToCanvas(image) {
+   canvas.width = width;
+   canvas.height = height;
+
+-  const context = canvas.getContext("2d");
++  const context = canvas.getContext("2d")!;
+   context.drawImage(image, 0, 0, width, height);
+
+   return canvas;
+@@ -191,12 +198,12 @@ function imageToCanvas(image) {
+
+ //
+
+-function loadMolecule(model) {
++function loadMolecule(model: string) {
+   const url = "models/pdb/" + model;
+
+   for (let i = 0; i < objects.length; i++) {
+     const object = objects[i];
+-    object.parent.remove(object);
++    object.parent!.remove(object);
+   }
+
+   objects.length = 0;
+@@ -207,13 +214,17 @@ function loadMolecule(model) {
+     const json = pdb.json;
+
+     geometryAtoms.computeBoundingBox();
+-    geometryAtoms.boundingBox.getCenter(offset).negate();
++    geometryAtoms.boundingBox!.getCenter(offset).negate();
+
+     geometryAtoms.translate(offset.x, offset.y, offset.z);
+     geometryBonds.translate(offset.x, offset.y, offset.z);
+
+-    const positionAtoms = geometryAtoms.getAttribute("position");
+-    const colorAtoms = geometryAtoms.getAttribute("color");
++    const positionAtoms = geometryAtoms.getAttribute("position") as
++      | THREE.BufferAttribute
++      | THREE.InterleavedBufferAttribute;
++    const colorAtoms = geometryAtoms.getAttribute("color") as
++      | THREE.BufferAttribute
++      | THREE.InterleavedBufferAttribute;
+
+     const position = new THREE.Vector3();
+     const color = new THREE.Color();
+@@ -227,7 +238,7 @@ function loadMolecule(model) {
+
+       if (!colorSpriteMap[element]) {
+         const canvas = imageToCanvas(baseSprite);
+-        const context = canvas.getContext("2d");
++        const context = canvas.getContext("2d")!;
+
+         colorify(context, canvas.width, canvas.height, color);
+
+@@ -236,7 +247,7 @@ function loadMolecule(model) {
+         colorSpriteMap[element] = dataUrl;
+       }
+
+-      const colorSprite = colorSpriteMap[element];
++      const colorSprite = colorSpriteMap[element]!;
+
+       const atom = document.createElement("img");
+       atom.src = colorSprite;
+@@ -253,7 +264,9 @@ function loadMolecule(model) {
+       objects.push(object);
+     }
+
+-    const positionBonds = geometryBonds.getAttribute("position");
++    const positionBonds = geometryBonds.getAttribute("position") as
++      | THREE.BufferAttribute
++      | THREE.InterleavedBufferAttribute;
+
+     const start = new THREE.Vector3();
+     const end = new THREE.Vector3();
