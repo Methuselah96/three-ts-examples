@@ -270,7 +270,7 @@ function loadMolecule(model) {
 
       //
 
-      const bond = document.createElement("div");
+      let bond = document.createElement("div");
       bond.className = "bond";
       bond.style.height = bondLength + "px";
 
@@ -304,7 +304,11 @@ function loadMolecule(model) {
 
       //
 
-      const joint = new THREE.Object3D();
+      bond = document.createElement("div");
+      bond.className = "bond";
+      bond.style.height = bondLength + "px";
+
+      const joint = new THREE.Object3D(bond);
       joint.position.copy(start);
       joint.position.lerp(end, 0.5);
 
