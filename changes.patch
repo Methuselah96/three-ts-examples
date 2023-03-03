@@ -555,3 +555,53 @@ index dd2c522..a3dc447 100644
  }) {
    if (!camera.view) {
      camera.setViewOffset(
+diff --git a/examples/css3d_sprites.ts b/examples/css3d_sprites.ts
+index ce6d238..23f3e9e 100644
+--- a/examples/css3d_sprites.ts
++++ b/examples/css3d_sprites.ts
+@@ -7,12 +7,14 @@ import {
+   CSS3DSprite,
+ } from "three/addons/renderers/CSS3DRenderer.js";
+ 
+-let camera, scene, renderer;
+-let controls;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: CSS3DRenderer;
++let controls: TrackballControls;
+ 
+ const particlesTotal = 512;
+-const positions = [];
+-const objects = [];
++const positions: number[] = [];
++const objects: CSS3DSprite[] = [];
+ let current = 0;
+ 
+ init();
+@@ -33,7 +35,7 @@ function init() {
+   const image = document.createElement("img");
+   image.addEventListener("load", function () {
+     for (let i = 0; i < particlesTotal; i++) {
+-      const object = new CSS3DSprite(image.cloneNode());
++      const object = new CSS3DSprite(image.cloneNode() as typeof image);
+       (object.position.x = Math.random() * 4000 - 2000),
+         (object.position.y = Math.random() * 4000 - 2000),
+         (object.position.z = Math.random() * 4000 - 2000);
+@@ -105,7 +107,7 @@ function init() {
+ 
+   renderer = new CSS3DRenderer();
+   renderer.setSize(window.innerWidth, window.innerHeight);
+-  document.getElementById("container").appendChild(renderer.domElement);
++  document.getElementById("container")!.appendChild(renderer.domElement);
+ 
+   //
+ 
+@@ -143,7 +145,7 @@ function transition() {
+       .start();
+   }
+ 
+-  new TWEEN.Tween(this)
++  new TWEEN.Tween({})
+     .to({}, duration * 3)
+     .onComplete(transition)
+     .start();
