@@ -789,3 +789,21 @@ index 44a0c4b..bb9b126 100644
  
  init();
  animate();
+diff --git a/examples/misc_animation_keys.ts b/examples/misc_animation_keys.ts
+index a36b495..271a884 100644
+--- a/examples/misc_animation_keys.ts
++++ b/examples/misc_animation_keys.ts
+@@ -2,8 +2,11 @@ import * as THREE from "three";
+ 
+ import Stats from "three/addons/libs/stats.module.js";
+ 
+-let stats, clock;
+-let scene, camera, renderer, mixer;
++let stats: Stats, clock: THREE.Clock;
++let scene: THREE.Scene,
++  camera: THREE.PerspectiveCamera,
++  renderer: THREE.WebGLRenderer,
++  mixer: THREE.AnimationMixer;
+ 
+ init();
+ animate();
