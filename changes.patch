@@ -24,7 +24,7 @@ index f4fa083..787f584 100644
  init();
  animate();
 diff --git a/examples/css3d_molecules.ts b/examples/css3d_molecules.ts
-index dd8351d..3f7dc11 100644
+index ee79a49..1f7e79a 100644
 --- a/examples/css3d_molecules.ts
 +++ b/examples/css3d_molecules.ts
 @@ -9,11 +9,13 @@ import {
@@ -312,30 +312,23 @@ index b3bd43c..bf1664c 100644
    if (!camera.view) {
      camera.setViewOffset(
 diff --git a/examples/css3d_periodictable.ts b/examples/css3d_periodictable.ts
-index 99f0336..c439385 100644
+index 33d3514..c439385 100644
 --- a/examples/css3d_periodictable.ts
 +++ b/examples/css3d_periodictable.ts
-@@ -1,6 +1,6 @@
- import * as THREE from "three";
- 
--import { TWEEN } from "three/addons/libs/tween.module.min.js";
-+import TWEEN from "three/addons/libs/tween.module.js";
- import { TrackballControls } from "three/addons/controls/TrackballControls.js";
- import {
-   CSS3DRenderer,
 @@ -600,11 +600,18 @@ const table = [
    7,
  ];
  
 -let camera, scene, renderer;
 -let controls;
+-
+-const objects = [];
+-const targets = { table: [], sphere: [], helix: [], grid: [] };
 +let camera: THREE.PerspectiveCamera,
 +  scene: THREE.Scene,
 +  renderer: CSS3DRenderer;
 +let controls: TrackballControls;
- 
--const objects = [];
--const targets = { table: [], sphere: [], helix: [], grid: [] };
++
 +const objects: CSS3DObject[] = [];
 +const targets: {
 +  table: THREE.Object3D[];
