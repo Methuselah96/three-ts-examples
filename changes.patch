@@ -658,3 +658,116 @@ index f717a9a..4d60375 100644
    blocker.style.display = "none";
  
    controls.addEventListener("start", function () {
+diff --git a/examples/games_fps.ts b/examples/games_fps.ts
+index 9036298..1d24751 100644
+--- a/examples/games_fps.ts
++++ b/examples/games_fps.ts
+@@ -44,7 +44,7 @@ directionalLight.shadow.radius = 4;
+ directionalLight.shadow.bias = -0.00006;
+ scene.add(directionalLight);
+ 
+-const container = document.getElementById("container");
++const container = document.getElementById("container")!;
+ 
+ const renderer = new THREE.WebGLRenderer({ antialias: true });
+ renderer.setPixelRatio(window.devicePixelRatio);
+@@ -56,9 +56,9 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
+ container.appendChild(renderer.domElement);
+ 
+ const stats = new Stats();
+-stats.domElement.style.position = "absolute";
+-stats.domElement.style.top = "0px";
+-container.appendChild(stats.domElement);
++stats.dom.style.position = "absolute";
++stats.dom.style.top = "0px";
++container.appendChild(stats.dom);
+ 
+ const GRAVITY = 30;
+ 
+@@ -70,7 +70,13 @@ const STEPS_PER_FRAME = 5;
+ const sphereGeometry = new THREE.IcosahedronGeometry(SPHERE_RADIUS, 5);
+ const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xbbbb44 });
+ 
+-const spheres = [];
++interface Sphere {
++  mesh: THREE.Mesh;
++  collider: THREE.Sphere;
++  velocity: THREE.Vector3;
++}
++
++const spheres: Sphere[] = [];
+ let sphereIdx = 0;
+ 
+ for (let i = 0; i < NUM_SPHERES; i++) {
+@@ -101,7 +107,7 @@ const playerDirection = new THREE.Vector3();
+ let playerOnFloor = false;
+ let mouseTime = 0;
+ 
+-const keyStates = {};
++const keyStates: { [eventCode: string]: boolean | undefined } = {};
+ 
+ const vector1 = new THREE.Vector3();
+ const vector2 = new THREE.Vector3();
+@@ -180,7 +186,7 @@ function playerCollisions() {
+   }
+ }
+ 
+-function updatePlayer(deltaTime) {
++function updatePlayer(deltaTime: number) {
+   let damping = Math.exp(-4 * deltaTime) - 1;
+ 
+   if (!playerOnFloor) {
+@@ -200,7 +206,7 @@ function updatePlayer(deltaTime) {
+   camera.position.copy(playerCollider.end);
+ }
+ 
+-function playerSphereCollision(sphere) {
++function playerSphereCollision(sphere: Sphere) {
+   const center = vector1
+     .addVectors(playerCollider.start, playerCollider.end)
+     .multiplyScalar(0.5);
+@@ -263,7 +269,7 @@ function spheresCollisions() {
+   }
+ }
+ 
+-function updateSpheres(deltaTime) {
++function updateSpheres(deltaTime: number) {
+   spheres.forEach((sphere) => {
+     sphere.collider.center.addScaledVector(sphere.velocity, deltaTime);
+ 
+@@ -309,7 +315,7 @@ function getSideVector() {
+   return playerDirection;
+ }
+ 
+-function controls(deltaTime) {
++function controls(deltaTime: number) {
+   // gives a bit of air control
+   const speedDelta = deltaTime * (playerOnFloor ? 25 : 8);
+ 
+@@ -344,12 +350,14 @@ loader.load("collision-world.glb", (gltf) => {
+   worldOctree.fromGraphNode(gltf.scene);
+ 
+   gltf.scene.traverse((child) => {
+-    if (child.isMesh) {
++    if ((child as THREE.Mesh).isMesh) {
+       child.castShadow = true;
+       child.receiveShadow = true;
+ 
+-      if (child.material.map) {
+-        child.material.map.anisotropy = 4;
++      if (((child as THREE.Mesh).material as THREE.MeshStandardMaterial).map) {
++        (
++          (child as THREE.Mesh).material as THREE.MeshStandardMaterial
++        ).map!.anisotropy = 4;
+       }
+     }
+   });
+@@ -359,7 +367,7 @@ loader.load("collision-world.glb", (gltf) => {
+   scene.add(helper);
+ 
+   const gui = new GUI({ width: 200 });
+-  gui.add({ debug: false }, "debug").onChange(function (value) {
++  gui.add({ debug: false }, "debug").onChange(function (value: boolean) {
+     helper.visible = value;
+   });
+ 
