@@ -1,7 +1,18 @@
 # Update patch
 
-1. `git apply changes.patch`
-2. Make changes
-3. `git diff > ../changes.patch`
-4. Reset changes
-5. Copy patch file
+- `git apply changes.patch`
+- Make changes
+- `yarn run type-check`
+- `git diff > ../changes.patch`
+- Reset changes
+- Copy patch file
+
+# Update sources
+
+- `node index.js`
+- `git apply --reject changes.patch`
+- Fix conflicts
+- `yarn run type-check`
+- git diff > ../changes.patch`
+- Reset changes
+- Copy patch file
