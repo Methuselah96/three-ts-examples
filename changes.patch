@@ -1050,3 +1050,61 @@ index 6deca2a..2a10c76 100644
    if (type == "Orthographic") {
      camera = makeOrthographicCamera();
      camera.position.set(0, 0, orthographicDistance);
+diff --git a/examples/misc_controls_drag.ts b/examples/misc_controls_drag.ts
+index af1e3af..ba749f5 100644
+--- a/examples/misc_controls_drag.ts
++++ b/examples/misc_controls_drag.ts
+@@ -2,12 +2,14 @@ import * as THREE from "three";
+ 
+ import { DragControls } from "three/addons/controls/DragControls.js";
+ 
+-let container;
+-let camera, scene, renderer;
+-let controls, group;
++let container: HTMLDivElement;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer;
++let controls: DragControls, group: THREE.Group;
+ let enableSelection = false;
+ 
+-const objects = [];
++const objects: THREE.Object3D[] = [];
+ 
+ const mouse = new THREE.Vector2(),
+   raycaster = new THREE.Raycaster();
+@@ -106,7 +108,7 @@ function onWindowResize() {
+   render();
+ }
+ 
+-function onKeyDown(event) {
++function onKeyDown(event: KeyboardEvent) {
+   enableSelection = event.keyCode === 16 ? true : false;
+ }
+ 
+@@ -114,7 +116,7 @@ function onKeyUp() {
+   enableSelection = false;
+ }
+ 
+-function onClick(event) {
++function onClick(event: MouseEvent) {
+   event.preventDefault();
+ 
+   if (enableSelection === true) {
+@@ -132,10 +134,14 @@ function onClick(event) {
+       const object = intersections[0].object;
+ 
+       if (group.children.includes(object) === true) {
+-        object.material.emissive.set(0x000000);
++        (
++          (object as THREE.Mesh).material as THREE.MeshLambertMaterial
++        ).emissive.set(0x000000);
+         scene.attach(object);
+       } else {
+-        object.material.emissive.set(0xaaaaaa);
++        (
++          (object as THREE.Mesh).material as THREE.MeshLambertMaterial
++        ).emissive.set(0xaaaaaa);
+         group.attach(object);
+       }
+ 
