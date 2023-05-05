@@ -25,7 +25,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.rotation.order = "YXZ";
 
-const fillLight1 = new THREE.HemisphereLight(0x4488bb, 0x002244, 0.5);
+const fillLight1 = new THREE.HemisphereLight(0x8dc1de, 0x00668d, 0.5);
 fillLight1.position.set(2, 1, 1);
 scene.add(fillLight1);
 
@@ -51,7 +51,6 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.VSMShadowMap;
-renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 container.appendChild(renderer.domElement);
 
@@ -68,7 +67,7 @@ const SPHERE_RADIUS = 0.2;
 const STEPS_PER_FRAME = 5;
 
 const sphereGeometry = new THREE.IcosahedronGeometry(SPHERE_RADIUS, 5);
-const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xbbbb44 });
+const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xdede8d });
 
 const spheres = [];
 let sphereIdx = 0;
