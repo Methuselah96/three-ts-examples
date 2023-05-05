@@ -1,5 +1,5 @@
 diff --git a/examples/css2d_label.ts b/examples/css2d_label.ts
-index f4fa083..787f584 100644
+index ce736e5..9f4361d 100644
 --- a/examples/css2d_label.ts
 +++ b/examples/css2d_label.ts
 @@ -10,7 +10,10 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
@@ -23,6 +23,24 @@ index f4fa083..787f584 100644
  
  init();
  animate();
+@@ -71,7 +74,7 @@ function init() {
+     normalMap: textureLoader.load("textures/planets/earth_normal_2048.jpg"),
+     normalScale: new THREE.Vector2(0.85, 0.85),
+   });
+-  earthMaterial.map.colorSpace = THREE.SRGBColorSpace;
++  earthMaterial.map!.colorSpace = THREE.SRGBColorSpace;
+   const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+   scene.add(earth);
+ 
+@@ -80,7 +83,7 @@ function init() {
+     shininess: 5,
+     map: textureLoader.load("textures/planets/moon_1024.jpg"),
+   });
+-  moonMaterial.map.colorSpace = THREE.SRGBColorSpace;
++  moonMaterial.map!.colorSpace = THREE.SRGBColorSpace;
+   moon = new THREE.Mesh(moonGeometry, moonMaterial);
+   scene.add(moon);
+ 
 diff --git a/examples/css3d_molecules.ts b/examples/css3d_molecules.ts
 index ee79a49..a73c6af 100644
 --- a/examples/css3d_molecules.ts
@@ -636,7 +654,7 @@ index f717a9a..4d60375 100644
  
    controls.addEventListener("start", function () {
 diff --git a/examples/games_fps.ts b/examples/games_fps.ts
-index 9036298..1d24751 100644
+index 4ed91b1..50b388b 100644
 --- a/examples/games_fps.ts
 +++ b/examples/games_fps.ts
 @@ -44,7 +44,7 @@ directionalLight.shadow.radius = 4;
@@ -648,7 +666,7 @@ index 9036298..1d24751 100644
  
  const renderer = new THREE.WebGLRenderer({ antialias: true });
  renderer.setPixelRatio(window.devicePixelRatio);
-@@ -56,9 +56,9 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
+@@ -55,9 +55,9 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
  container.appendChild(renderer.domElement);
  
  const stats = new Stats();
@@ -661,9 +679,9 @@ index 9036298..1d24751 100644
  
  const GRAVITY = 30;
  
-@@ -70,7 +70,13 @@ const STEPS_PER_FRAME = 5;
+@@ -69,7 +69,13 @@ const STEPS_PER_FRAME = 5;
  const sphereGeometry = new THREE.IcosahedronGeometry(SPHERE_RADIUS, 5);
- const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xbbbb44 });
+ const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xdede8d });
  
 -const spheres = [];
 +interface Sphere {
@@ -676,7 +694,7 @@ index 9036298..1d24751 100644
  let sphereIdx = 0;
  
  for (let i = 0; i < NUM_SPHERES; i++) {
-@@ -101,7 +107,7 @@ const playerDirection = new THREE.Vector3();
+@@ -100,7 +106,7 @@ const playerDirection = new THREE.Vector3();
  let playerOnFloor = false;
  let mouseTime = 0;
  
@@ -685,7 +703,7 @@ index 9036298..1d24751 100644
  
  const vector1 = new THREE.Vector3();
  const vector2 = new THREE.Vector3();
-@@ -180,7 +186,7 @@ function playerCollisions() {
+@@ -179,7 +185,7 @@ function playerCollisions() {
    }
  }
  
@@ -694,7 +712,7 @@ index 9036298..1d24751 100644
    let damping = Math.exp(-4 * deltaTime) - 1;
  
    if (!playerOnFloor) {
-@@ -200,7 +206,7 @@ function updatePlayer(deltaTime) {
+@@ -199,7 +205,7 @@ function updatePlayer(deltaTime) {
    camera.position.copy(playerCollider.end);
  }
  
@@ -703,7 +721,7 @@ index 9036298..1d24751 100644
    const center = vector1
      .addVectors(playerCollider.start, playerCollider.end)
      .multiplyScalar(0.5);
-@@ -263,7 +269,7 @@ function spheresCollisions() {
+@@ -262,7 +268,7 @@ function spheresCollisions() {
    }
  }
  
@@ -712,7 +730,7 @@ index 9036298..1d24751 100644
    spheres.forEach((sphere) => {
      sphere.collider.center.addScaledVector(sphere.velocity, deltaTime);
  
-@@ -309,7 +315,7 @@ function getSideVector() {
+@@ -308,7 +314,7 @@ function getSideVector() {
    return playerDirection;
  }
  
@@ -721,7 +739,7 @@ index 9036298..1d24751 100644
    // gives a bit of air control
    const speedDelta = deltaTime * (playerOnFloor ? 25 : 8);
  
-@@ -344,12 +350,14 @@ loader.load("collision-world.glb", (gltf) => {
+@@ -343,12 +349,14 @@ loader.load("collision-world.glb", (gltf) => {
    worldOctree.fromGraphNode(gltf.scene);
  
    gltf.scene.traverse((child) => {
@@ -739,7 +757,7 @@ index 9036298..1d24751 100644
        }
      }
    });
-@@ -359,7 +367,7 @@ loader.load("collision-world.glb", (gltf) => {
+@@ -358,7 +366,7 @@ loader.load("collision-world.glb", (gltf) => {
    scene.add(helper);
  
    const gui = new GUI({ width: 200 });
