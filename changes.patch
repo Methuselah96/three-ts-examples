@@ -983,3 +983,70 @@ index ab31b0e..47e2747 100644
 +    );
    }
  });
+diff --git a/examples/misc_controls_arcball.ts b/examples/misc_controls_arcball.ts
+index 6deca2a..2a10c76 100644
+--- a/examples/misc_controls_arcball.ts
++++ b/examples/misc_controls_arcball.ts
+@@ -12,8 +12,12 @@ const cameraType = { type: "Perspective" };
+ 
+ const perspectiveDistance = 2.5;
+ const orthographicDistance = 120;
+-let camera, controls, scene, renderer, gui;
+-let folderOptions, folderAnimations;
++let camera: THREE.OrthographicCamera | THREE.PerspectiveCamera,
++  controls: ArcballControls,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer,
++  gui: GUI;
++let folderOptions: GUI, folderAnimations: GUI;
+ 
+ const arcballGui = {
+   gizmoVisible: true,
+@@ -109,8 +113,8 @@ function init() {
+       material.normalMap.wrapS = THREE.RepeatWrapping;
+ 
+       group.traverse(function (child) {
+-        if (child.isMesh) {
+-          child.material = material;
++        if ((child as THREE.Mesh).isMesh) {
++          (child as THREE.Mesh).material = material;
+         }
+       });
+ 
+@@ -190,12 +194,13 @@ function onWindowResize() {
+ 
+     const halfW = perspectiveDistance * Math.tan(halfFovH);
+     const halfH = perspectiveDistance * Math.tan(halfFovV);
+-    camera.left = -halfW;
+-    camera.right = halfW;
+-    camera.top = halfH;
+-    camera.bottom = -halfH;
++    (camera as THREE.OrthographicCamera).left = -halfW;
++    (camera as THREE.OrthographicCamera).right = halfW;
++    (camera as THREE.OrthographicCamera).top = halfH;
++    (camera as THREE.OrthographicCamera).bottom = -halfH;
+   } else if (camera.type == "PerspectiveCamera") {
+-    camera.aspect = window.innerWidth / window.innerHeight;
++    (camera as THREE.PerspectiveCamera).aspect =
++      window.innerWidth / window.innerHeight;
+   }
+ 
+   camera.updateProjectionMatrix();
+@@ -209,7 +214,7 @@ function render() {
+   renderer.render(scene, camera);
+ }
+ 
+-function onKeyDown(event) {
++function onKeyDown(event: KeyboardEvent) {
+   if (event.key === "c") {
+     if (event.ctrlKey || event.metaKey) {
+       controls.copyState();
+@@ -221,7 +226,7 @@ function onKeyDown(event) {
+   }
+ }
+ 
+-function setCamera(type) {
++function setCamera(type: string) {
+   if (type == "Orthographic") {
+     camera = makeOrthographicCamera();
+     camera.position.set(0, 0, orthographicDistance);
