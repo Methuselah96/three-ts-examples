@@ -1195,3 +1195,68 @@ index e2e3500..eec819f 100644
  
  init();
  //render(); // remove when using next line for animation loop (requestAnimationFrame)
+diff --git a/examples/misc_controls_pointerlock.ts b/examples/misc_controls_pointerlock.ts
+index 53d5657..d92f352 100644
+--- a/examples/misc_controls_pointerlock.ts
++++ b/examples/misc_controls_pointerlock.ts
+@@ -2,11 +2,14 @@ import * as THREE from "three";
+ 
+ import { PointerLockControls } from "three/addons/controls/PointerLockControls.js";
+ 
+-let camera, scene, renderer, controls;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer,
++  controls: PointerLockControls;
+ 
+-const objects = [];
++const objects: THREE.Mesh[] = [];
+ 
+-let raycaster;
++let raycaster: THREE.Raycaster;
+ 
+ let moveForward = false;
+ let moveBackward = false;
+@@ -42,8 +45,8 @@ function init() {
+ 
+   controls = new PointerLockControls(camera, document.body);
+ 
+-  const blocker = document.getElementById("blocker");
+-  const instructions = document.getElementById("instructions");
++  const blocker = document.getElementById("blocker")!;
++  const instructions = document.getElementById("instructions")!;
+ 
+   instructions.addEventListener("click", function () {
+     controls.lock();
+@@ -61,7 +64,7 @@ function init() {
+ 
+   scene.add(controls.getObject());
+ 
+-  const onKeyDown = function (event) {
++  const onKeyDown = function (event: KeyboardEvent) {
+     switch (event.code) {
+       case "ArrowUp":
+       case "KeyW":
+@@ -90,7 +93,7 @@ function init() {
+     }
+   };
+ 
+-  const onKeyUp = function (event) {
++  const onKeyUp = function (event: KeyboardEvent) {
+     switch (event.code) {
+       case "ArrowUp":
+       case "KeyW":
+@@ -126,7 +129,12 @@ function init() {
+ 
+   // floor
+ 
+-  let floorGeometry = new THREE.PlaneGeometry(2000, 2000, 100, 100);
++  let floorGeometry: THREE.BufferGeometry = new THREE.PlaneGeometry(
++    2000,
++    2000,
++    100,
++    100
++  );
+   floorGeometry.rotateX(-Math.PI / 2);
+ 
+   // vertex displacement
