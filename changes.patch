@@ -1296,3 +1296,33 @@ index 73dece6..cfbfa2f 100644
    controls = new TrackballControls(camera, renderer.domElement);
  
    controls.rotateSpeed = 1.0;
+diff --git a/examples/misc_controls_transform.ts b/examples/misc_controls_transform.ts
+index af9ed85..332ec59 100644
+--- a/examples/misc_controls_transform.ts
++++ b/examples/misc_controls_transform.ts
+@@ -3,8 +3,13 @@ import * as THREE from "three";
+ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+ import { TransformControls } from "three/addons/controls/TransformControls.js";
+ 
+-let cameraPersp, cameraOrtho, currentCamera;
+-let scene, renderer, control, orbit;
++let cameraPersp: THREE.PerspectiveCamera,
++  cameraOrtho: THREE.OrthographicCamera,
++  currentCamera: THREE.Camera;
++let scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer,
++  control: TransformControls,
++  orbit: OrbitControls;
+ 
+ init();
+ render();
+@@ -94,7 +99,8 @@ function init() {
+       case 67: // C
+         const position = currentCamera.position.clone();
+ 
+-        currentCamera = currentCamera.isPerspectiveCamera
++        currentCamera = (currentCamera as THREE.PerspectiveCamera)
++          .isPerspectiveCamera
+           ? cameraOrtho
+           : cameraPersp;
+         currentCamera.position.copy(position);
