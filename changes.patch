@@ -1260,3 +1260,39 @@ index 53d5657..d92f352 100644
    floorGeometry.rotateX(-Math.PI / 2);
  
    // vertex displacement
+diff --git a/examples/misc_controls_trackball.ts b/examples/misc_controls_trackball.ts
+index 73dece6..cfbfa2f 100644
+--- a/examples/misc_controls_trackball.ts
++++ b/examples/misc_controls_trackball.ts
+@@ -5,7 +5,12 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
+ 
+ import { TrackballControls } from "three/addons/controls/TrackballControls.js";
+ 
+-let perspectiveCamera, orthographicCamera, controls, scene, renderer, stats;
++let perspectiveCamera: THREE.PerspectiveCamera,
++  orthographicCamera: THREE.OrthographicCamera,
++  controls: TrackballControls,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer,
++  stats: Stats;
+ 
+ const params = {
+   orthographicCamera: false,
+@@ -83,7 +88,7 @@ function init() {
+   gui
+     .add(params, "orthographicCamera")
+     .name("use orthographic")
+-    .onChange(function (value) {
++    .onChange(function (value: boolean) {
+       controls.dispose();
+ 
+       createControls(value ? orthographicCamera : perspectiveCamera);
+@@ -96,7 +101,7 @@ function init() {
+   createControls(perspectiveCamera);
+ }
+ 
+-function createControls(camera) {
++function createControls(camera: THREE.Camera) {
+   controls = new TrackballControls(camera, renderer.domElement);
+ 
+   controls.rotateSpeed = 1.0;
