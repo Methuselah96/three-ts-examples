@@ -1163,3 +1163,19 @@ index 185ba0c..087853f 100644
  
    meshMoon = new THREE.Mesh(geometry, materialMoon);
    meshMoon.position.set(radius * 5, 0, 0);
+diff --git a/examples/misc_controls_map.ts b/examples/misc_controls_map.ts
+index 964bca8..09c9d73 100644
+--- a/examples/misc_controls_map.ts
++++ b/examples/misc_controls_map.ts
+@@ -4,7 +4,10 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
+ 
+ import { MapControls } from "three/addons/controls/MapControls.js";
+ 
+-let camera, controls, scene, renderer;
++let camera: THREE.PerspectiveCamera,
++  controls: MapControls,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer;
+ 
+ init();
+ //render(); // remove when using next line for animation loop (requestAnimationFrame)
