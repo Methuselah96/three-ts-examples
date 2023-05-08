@@ -1179,3 +1179,19 @@ index 964bca8..09c9d73 100644
  
  init();
  //render(); // remove when using next line for animation loop (requestAnimationFrame)
+diff --git a/examples/misc_controls_orbit.ts b/examples/misc_controls_orbit.ts
+index e2e3500..eec819f 100644
+--- a/examples/misc_controls_orbit.ts
++++ b/examples/misc_controls_orbit.ts
+@@ -2,7 +2,10 @@ import * as THREE from "three";
+ 
+ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+ 
+-let camera, controls, scene, renderer;
++let camera: THREE.PerspectiveCamera,
++  controls: OrbitControls,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer;
+ 
+ init();
+ //render(); // remove when using next line for animation loop (requestAnimationFrame)
