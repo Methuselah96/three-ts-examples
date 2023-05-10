@@ -1720,3 +1720,16 @@ index e450cc3..2085afe 100644
    mouseX = (event.clientX - windowHalfX) * 10;
    mouseY = (event.clientY - windowHalfY) * 10;
  }
+diff --git a/examples/misc_uv_tests.ts b/examples/misc_uv_tests.ts
+index 6dd3fbf..39c2ce2 100644
+--- a/examples/misc_uv_tests.ts
++++ b/examples/misc_uv_tests.ts
+@@ -7,7 +7,7 @@ import { UVsDebug } from "three/addons/utils/UVsDebug.js";
+  * as well as allow a new user to visualize what UVs are about.
+  */
+ 
+-function test(name, geometry) {
++function test(name: string, geometry: THREE.BufferGeometry) {
+   const d = document.createElement("div");
+ 
+   d.innerHTML = "<h3>" + name + "</h3>";
