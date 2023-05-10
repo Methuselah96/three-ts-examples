@@ -1692,3 +1692,31 @@ index 3a57502..9cf134e 100644
    const gradient = context.createRadialGradient(
      canvas.width / 2,
      canvas.height / 2,
+diff --git a/examples/misc_lookat.ts b/examples/misc_lookat.ts
+index e450cc3..2085afe 100644
+--- a/examples/misc_lookat.ts
++++ b/examples/misc_lookat.ts
+@@ -2,9 +2,12 @@ import * as THREE from "three";
+ 
+ import Stats from "three/addons/libs/stats.module.js";
+ 
+-let camera, scene, renderer, stats;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer,
++  stats: Stats;
+ 
+-let sphere;
++let sphere: THREE.Mesh;
+ 
+ let mouseX = 0,
+   mouseY = 0;
+@@ -72,7 +75,7 @@ function onWindowResize() {
+   renderer.setSize(window.innerWidth, window.innerHeight);
+ }
+ 
+-function onDocumentMouseMove(event) {
++function onDocumentMouseMove(event: MouseEvent) {
+   mouseX = (event.clientX - windowHalfX) * 10;
+   mouseY = (event.clientY - windowHalfY) * 10;
+ }
