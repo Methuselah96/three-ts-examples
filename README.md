@@ -9,6 +9,7 @@
 
 # Update sources
 
+- Delete all examples
 - `node index.js`
 - Commit changes
 - `git apply --reject changes.patch`
