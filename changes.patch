@@ -1,5 +1,5 @@
 diff --git a/examples/css2d_label.ts b/examples/css2d_label.ts
-index ce736e5..9f4361d 100644
+index b134c09..1ddbfdd 100644
 --- a/examples/css2d_label.ts
 +++ b/examples/css2d_label.ts
 @@ -10,7 +10,10 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
@@ -165,7 +165,7 @@ index ee79a49..a73c6af 100644
        const atom = document.createElement("img");
        atom.src = colorSprite;
 diff --git a/examples/css3d_orthographic.ts b/examples/css3d_orthographic.ts
-index b3bd43c..bf1664c 100644
+index 715537b..bdcb398 100644
 --- a/examples/css3d_orthographic.ts
 +++ b/examples/css3d_orthographic.ts
 @@ -6,10 +6,13 @@ import {
@@ -184,7 +184,7 @@ index b3bd43c..bf1664c 100644
  
  const frustumSize = 500;
  
-@@ -84,18 +87,24 @@ function init() {
+@@ -85,18 +88,24 @@ function init() {
    renderer2 = new CSS3DRenderer();
    renderer2.setSize(window.innerWidth, window.innerHeight);
    renderer2.domElement.style.position = "absolute";
@@ -212,7 +212,7 @@ index b3bd43c..bf1664c 100644
      element.style.background = cssColor;
  
      const object = new CSS3DObject(element);
-@@ -142,12 +151,12 @@ function createPanel() {
+@@ -143,12 +152,12 @@ function createPanel() {
  
    const settings = {
      setViewOffset() {
@@ -231,7 +231,7 @@ index b3bd43c..bf1664c 100644
      },
      fullWidth: 0,
      fullHeight: 0,
-@@ -156,12 +165,12 @@ function createPanel() {
+@@ -157,12 +166,12 @@ function createPanel() {
      width: 0,
      height: 0,
      clearViewOffset() {
@@ -250,7 +250,7 @@ index b3bd43c..bf1664c 100644
        camera.clearViewOffset();
      },
    };
-@@ -175,7 +184,7 @@ function createPanel() {
+@@ -176,7 +185,7 @@ function createPanel() {
        window.screen.width * 2,
        1
      )
@@ -259,7 +259,7 @@ index b3bd43c..bf1664c 100644
      .disable();
    folder1
      .add(
-@@ -185,19 +194,19 @@ function createPanel() {
+@@ -186,19 +195,19 @@ function createPanel() {
        window.screen.height * 2,
        1
      )
@@ -283,7 +283,7 @@ index b3bd43c..bf1664c 100644
      .disable();
    folder1
      .add(
-@@ -207,7 +216,7 @@ function createPanel() {
+@@ -208,7 +217,7 @@ function createPanel() {
        window.screen.height * 2,
        1
      )
@@ -292,7 +292,7 @@ index b3bd43c..bf1664c 100644
      .disable();
    folder1.add(settings, "clearViewOffset");
  }
-@@ -219,6 +228,13 @@ function updateCameraViewOffset({
+@@ -220,6 +229,13 @@ function updateCameraViewOffset({
    y,
    width,
    height,
@@ -415,7 +415,7 @@ index 33d3514..c439385 100644
      .onUpdate(render)
      .start();
 diff --git a/examples/css3d_sandbox.ts b/examples/css3d_sandbox.ts
-index dd2c522..a3dc447 100644
+index 5bf5178..2bde7f0 100644
 --- a/examples/css3d_sandbox.ts
 +++ b/examples/css3d_sandbox.ts
 @@ -5,13 +5,15 @@ import {
@@ -447,7 +447,7 @@ index dd2c522..a3dc447 100644
      element.style.background = new THREE.Color(
        Math.random() * 0xffffff
      ).getStyle();
-@@ -77,7 +79,7 @@ function init() {
+@@ -78,7 +80,7 @@ function init() {
    renderer2 = new CSS3DRenderer();
    renderer2.setSize(window.innerWidth, window.innerHeight);
    renderer2.domElement.style.position = "absolute";
@@ -456,7 +456,7 @@ index dd2c522..a3dc447 100644
    document.body.appendChild(renderer2.domElement);
  
    controls = new TrackballControls(camera, renderer2.domElement);
-@@ -111,12 +113,12 @@ function createPanel() {
+@@ -112,12 +114,12 @@ function createPanel() {
  
    const settings = {
      setViewOffset() {
@@ -475,7 +475,7 @@ index dd2c522..a3dc447 100644
      },
      fullWidth: 0,
      fullHeight: 0,
-@@ -125,12 +127,12 @@ function createPanel() {
+@@ -126,12 +128,12 @@ function createPanel() {
      width: 0,
      height: 0,
      clearViewOffset() {
@@ -494,7 +494,7 @@ index dd2c522..a3dc447 100644
        camera.clearViewOffset();
      },
    };
-@@ -144,7 +146,7 @@ function createPanel() {
+@@ -145,7 +147,7 @@ function createPanel() {
        window.screen.width * 2,
        1
      )
@@ -503,7 +503,7 @@ index dd2c522..a3dc447 100644
      .disable();
    folder1
      .add(
-@@ -154,19 +156,19 @@ function createPanel() {
+@@ -155,19 +157,19 @@ function createPanel() {
        window.screen.height * 2,
        1
      )
@@ -527,7 +527,7 @@ index dd2c522..a3dc447 100644
      .disable();
    folder1
      .add(
-@@ -176,7 +178,7 @@ function createPanel() {
+@@ -177,7 +179,7 @@ function createPanel() {
        window.screen.height * 2,
        1
      )
@@ -536,7 +536,7 @@ index dd2c522..a3dc447 100644
      .disable();
    folder1.add(settings, "clearViewOffset");
  }
-@@ -188,6 +190,13 @@ function updateCameraViewOffset({
+@@ -189,6 +191,13 @@ function updateCameraViewOffset({
    y,
    width,
    height,
@@ -654,7 +654,7 @@ index f717a9a..4d60375 100644
  
    controls.addEventListener("start", function () {
 diff --git a/examples/games_fps.ts b/examples/games_fps.ts
-index 4ed91b1..50b388b 100644
+index 6dd79ea..4b80597 100644
 --- a/examples/games_fps.ts
 +++ b/examples/games_fps.ts
 @@ -44,7 +44,7 @@ directionalLight.shadow.radius = 4;
@@ -666,7 +666,7 @@ index 4ed91b1..50b388b 100644
  
  const renderer = new THREE.WebGLRenderer({ antialias: true });
  renderer.setPixelRatio(window.devicePixelRatio);
-@@ -55,9 +55,9 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
+@@ -56,9 +56,9 @@ renderer.useLegacyLights = false;
  container.appendChild(renderer.domElement);
  
  const stats = new Stats();
@@ -679,7 +679,7 @@ index 4ed91b1..50b388b 100644
  
  const GRAVITY = 30;
  
-@@ -69,7 +69,13 @@ const STEPS_PER_FRAME = 5;
+@@ -70,7 +70,13 @@ const STEPS_PER_FRAME = 5;
  const sphereGeometry = new THREE.IcosahedronGeometry(SPHERE_RADIUS, 5);
  const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xdede8d });
  
@@ -694,7 +694,7 @@ index 4ed91b1..50b388b 100644
  let sphereIdx = 0;
  
  for (let i = 0; i < NUM_SPHERES; i++) {
-@@ -100,7 +106,7 @@ const playerDirection = new THREE.Vector3();
+@@ -101,7 +107,7 @@ const playerDirection = new THREE.Vector3();
  let playerOnFloor = false;
  let mouseTime = 0;
  
@@ -703,7 +703,7 @@ index 4ed91b1..50b388b 100644
  
  const vector1 = new THREE.Vector3();
  const vector2 = new THREE.Vector3();
-@@ -179,7 +185,7 @@ function playerCollisions() {
+@@ -180,7 +186,7 @@ function playerCollisions() {
    }
  }
  
@@ -712,7 +712,7 @@ index 4ed91b1..50b388b 100644
    let damping = Math.exp(-4 * deltaTime) - 1;
  
    if (!playerOnFloor) {
-@@ -199,7 +205,7 @@ function updatePlayer(deltaTime) {
+@@ -200,7 +206,7 @@ function updatePlayer(deltaTime) {
    camera.position.copy(playerCollider.end);
  }
  
@@ -721,7 +721,7 @@ index 4ed91b1..50b388b 100644
    const center = vector1
      .addVectors(playerCollider.start, playerCollider.end)
      .multiplyScalar(0.5);
-@@ -262,7 +268,7 @@ function spheresCollisions() {
+@@ -263,7 +269,7 @@ function spheresCollisions() {
    }
  }
  
@@ -730,7 +730,7 @@ index 4ed91b1..50b388b 100644
    spheres.forEach((sphere) => {
      sphere.collider.center.addScaledVector(sphere.velocity, deltaTime);
  
-@@ -308,7 +314,7 @@ function getSideVector() {
+@@ -309,7 +315,7 @@ function getSideVector() {
    return playerDirection;
  }
  
@@ -739,7 +739,7 @@ index 4ed91b1..50b388b 100644
    // gives a bit of air control
    const speedDelta = deltaTime * (playerOnFloor ? 25 : 8);
  
-@@ -343,12 +349,14 @@ loader.load("collision-world.glb", (gltf) => {
+@@ -344,12 +350,14 @@ loader.load("collision-world.glb", (gltf) => {
    worldOctree.fromGraphNode(gltf.scene);
  
    gltf.scene.traverse((child) => {
@@ -757,7 +757,7 @@ index 4ed91b1..50b388b 100644
        }
      }
    });
-@@ -358,7 +366,7 @@ loader.load("collision-world.glb", (gltf) => {
+@@ -359,7 +367,7 @@ loader.load("collision-world.glb", (gltf) => {
    scene.add(helper);
  
    const gui = new GUI({ width: 200 });
@@ -767,7 +767,7 @@ index 4ed91b1..50b388b 100644
    });
  
 diff --git a/examples/misc_animation_groups.ts b/examples/misc_animation_groups.ts
-index 44a0c4b..bb9b126 100644
+index d8f760a..3a0e03d 100644
 --- a/examples/misc_animation_groups.ts
 +++ b/examples/misc_animation_groups.ts
 @@ -2,8 +2,11 @@ import * as THREE from "three";
@@ -785,7 +785,7 @@ index 44a0c4b..bb9b126 100644
  init();
  animate();
 diff --git a/examples/misc_animation_keys.ts b/examples/misc_animation_keys.ts
-index a36b495..271a884 100644
+index 1008498..a89efdc 100644
 --- a/examples/misc_animation_keys.ts
 +++ b/examples/misc_animation_keys.ts
 @@ -2,8 +2,11 @@ import * as THREE from "three";
@@ -803,7 +803,7 @@ index a36b495..271a884 100644
  init();
  animate();
 diff --git a/examples/misc_boxselection.ts b/examples/misc_boxselection.ts
-index ab31b0e..47e2747 100644
+index 9dba2bc..21b44cf 100644
 --- a/examples/misc_boxselection.ts
 +++ b/examples/misc_boxselection.ts
 @@ -5,81 +5,80 @@ import Stats from "three/addons/libs/stats.module.js";
@@ -828,50 +828,50 @@ index ab31b0e..47e2747 100644
 +camera = new THREE.PerspectiveCamera(
 +  70,
 +  window.innerWidth / window.innerHeight,
-+  1,
-+  5000
++  0.1,
++  500
 +);
-+camera.position.z = 1000;
++camera.position.z = 50;
  
 -  camera = new THREE.PerspectiveCamera(
 -    70,
 -    window.innerWidth / window.innerHeight,
--    1,
--    5000
+-    0.1,
+-    500
 -  );
--  camera.position.z = 1000;
+-  camera.position.z = 50;
 +scene = new THREE.Scene();
 +scene.background = new THREE.Color(0xf0f0f0);
  
 -  scene = new THREE.Scene();
 -  scene.background = new THREE.Color(0xf0f0f0);
-+scene.add(new THREE.AmbientLight(0x505050));
++scene.add(new THREE.AmbientLight(0xaaaaaa));
  
--  scene.add(new THREE.AmbientLight(0x505050));
-+const light = new THREE.SpotLight(0xffffff, 1.5);
-+light.position.set(0, 500, 2000);
-+light.angle = Math.PI / 9;
+-  scene.add(new THREE.AmbientLight(0xaaaaaa));
++const light = new THREE.SpotLight(0xffffff, 10000);
++light.position.set(0, 25, 50);
++light.angle = Math.PI / 5;
  
--  const light = new THREE.SpotLight(0xffffff, 1.5);
--  light.position.set(0, 500, 2000);
--  light.angle = Math.PI / 9;
+-  const light = new THREE.SpotLight(0xffffff, 10000);
+-  light.position.set(0, 25, 50);
+-  light.angle = Math.PI / 5;
 +light.castShadow = true;
-+light.shadow.camera.near = 1000;
-+light.shadow.camera.far = 4000;
++light.shadow.camera.near = 10;
++light.shadow.camera.far = 100;
 +light.shadow.mapSize.width = 1024;
 +light.shadow.mapSize.height = 1024;
  
 -  light.castShadow = true;
--  light.shadow.camera.near = 1000;
--  light.shadow.camera.far = 4000;
+-  light.shadow.camera.near = 10;
+-  light.shadow.camera.far = 100;
 -  light.shadow.mapSize.width = 1024;
 -  light.shadow.mapSize.height = 1024;
 +scene.add(light);
  
 -  scene.add(light);
-+const geometry = new THREE.BoxGeometry(20, 20, 20);
++const geometry = new THREE.BoxGeometry();
  
--  const geometry = new THREE.BoxGeometry(20, 20, 20);
+-  const geometry = new THREE.BoxGeometry();
 +for (let i = 0; i < 200; i++) {
 +  const object = new THREE.Mesh(
 +    geometry,
@@ -883,13 +883,13 @@ index ab31b0e..47e2747 100644
 -      geometry,
 -      new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff })
 -    );
-+  object.position.x = Math.random() * 1600 - 800;
-+  object.position.y = Math.random() * 900 - 450;
-+  object.position.z = Math.random() * 900 - 500;
++  object.position.x = Math.random() * 80 - 40;
++  object.position.y = Math.random() * 45 - 25;
++  object.position.z = Math.random() * 45 - 25;
  
--    object.position.x = Math.random() * 1600 - 800;
--    object.position.y = Math.random() * 900 - 450;
--    object.position.z = Math.random() * 900 - 500;
+-    object.position.x = Math.random() * 80 - 40;
+-    object.position.y = Math.random() * 45 - 25;
+-    object.position.z = Math.random() * 45 - 25;
 +  object.rotation.x = Math.random() * 2 * Math.PI;
 +  object.rotation.y = Math.random() * 2 * Math.PI;
 +  object.rotation.z = Math.random() * 2 * Math.PI;
@@ -917,13 +917,14 @@ index ab31b0e..47e2747 100644
 +renderer = new THREE.WebGLRenderer({ antialias: true });
 +renderer.setPixelRatio(window.devicePixelRatio);
 +renderer.setSize(window.innerWidth, window.innerHeight);
++renderer.useLegacyLights = false;
++renderer.shadowMap.enabled = true;
++renderer.shadowMap.type = THREE.PCFShadowMap;
  
 -  renderer = new THREE.WebGLRenderer({ antialias: true });
 -  renderer.setPixelRatio(window.devicePixelRatio);
 -  renderer.setSize(window.innerWidth, window.innerHeight);
-+renderer.shadowMap.enabled = true;
-+renderer.shadowMap.type = THREE.PCFShadowMap;
- 
+-  renderer.useLegacyLights = false;
 -  renderer.shadowMap.enabled = true;
 -  renderer.shadowMap.type = THREE.PCFShadowMap;
 +container.appendChild(renderer.domElement);
@@ -984,7 +985,7 @@ index ab31b0e..47e2747 100644
    }
  });
 diff --git a/examples/misc_controls_arcball.ts b/examples/misc_controls_arcball.ts
-index 6deca2a..2a10c76 100644
+index 3b2f979..c11d354 100644
 --- a/examples/misc_controls_arcball.ts
 +++ b/examples/misc_controls_arcball.ts
 @@ -12,8 +12,12 @@ const cameraType = { type: "Perspective" };
@@ -1002,7 +1003,7 @@ index 6deca2a..2a10c76 100644
  
  const arcballGui = {
    gizmoVisible: true,
-@@ -109,8 +113,8 @@ function init() {
+@@ -108,8 +112,8 @@ function init() {
        material.normalMap.wrapS = THREE.RepeatWrapping;
  
        group.traverse(function (child) {
@@ -1013,7 +1014,7 @@ index 6deca2a..2a10c76 100644
          }
        });
  
-@@ -190,12 +194,13 @@ function onWindowResize() {
+@@ -189,12 +193,13 @@ function onWindowResize() {
  
      const halfW = perspectiveDistance * Math.tan(halfFovH);
      const halfH = perspectiveDistance * Math.tan(halfFovV);
@@ -1032,7 +1033,7 @@ index 6deca2a..2a10c76 100644
    }
  
    camera.updateProjectionMatrix();
-@@ -209,7 +214,7 @@ function render() {
+@@ -208,7 +213,7 @@ function render() {
    renderer.render(scene, camera);
  }
  
@@ -1041,7 +1042,7 @@ index 6deca2a..2a10c76 100644
    if (event.key === "c") {
      if (event.ctrlKey || event.metaKey) {
        controls.copyState();
-@@ -221,7 +226,7 @@ function onKeyDown(event) {
+@@ -220,7 +225,7 @@ function onKeyDown(event) {
    }
  }
  
@@ -1051,7 +1052,7 @@ index 6deca2a..2a10c76 100644
      camera = makeOrthographicCamera();
      camera.position.set(0, 0, orthographicDistance);
 diff --git a/examples/misc_controls_drag.ts b/examples/misc_controls_drag.ts
-index af1e3af..ba749f5 100644
+index 30c0d43..13a3719 100644
 --- a/examples/misc_controls_drag.ts
 +++ b/examples/misc_controls_drag.ts
 @@ -2,12 +2,14 @@ import * as THREE from "three";
@@ -1109,10 +1110,10 @@ index af1e3af..ba749f5 100644
        }
  
 diff --git a/examples/misc_controls_fly.ts b/examples/misc_controls_fly.ts
-index 185ba0c..087853f 100644
+index c14477b..e313c6a 100644
 --- a/examples/misc_controls_fly.ts
 +++ b/examples/misc_controls_fly.ts
-@@ -20,11 +20,18 @@ const MARGIN = 0;
+@@ -19,11 +19,18 @@ const MARGIN = 0;
  let SCREEN_HEIGHT = window.innerHeight - MARGIN * 2;
  let SCREEN_WIDTH = window.innerWidth;
  
@@ -1136,7 +1137,7 @@ index 185ba0c..087853f 100644
  
  const textureLoader = new THREE.TextureLoader();
  
-@@ -62,7 +69,7 @@ function init() {
+@@ -61,7 +68,7 @@ function init() {
      // y scale is negated to compensate for normal map handedness.
      normalScale: new THREE.Vector2(0.85, -0.85),
    });
@@ -1145,7 +1146,7 @@ index 185ba0c..087853f 100644
  
    // planet
  
-@@ -79,7 +86,7 @@ function init() {
+@@ -78,7 +85,7 @@ function init() {
      map: textureLoader.load("textures/planets/earth_clouds_1024.png"),
      transparent: true,
    });
@@ -1154,7 +1155,7 @@ index 185ba0c..087853f 100644
  
    meshClouds = new THREE.Mesh(geometry, materialClouds);
    meshClouds.scale.set(cloudsScale, cloudsScale, cloudsScale);
-@@ -91,7 +98,7 @@ function init() {
+@@ -90,7 +97,7 @@ function init() {
    const materialMoon = new THREE.MeshPhongMaterial({
      map: textureLoader.load("textures/planets/moon_1024.jpg"),
    });
@@ -1164,7 +1165,7 @@ index 185ba0c..087853f 100644
    meshMoon = new THREE.Mesh(geometry, materialMoon);
    meshMoon.position.set(radius * 5, 0, 0);
 diff --git a/examples/misc_controls_map.ts b/examples/misc_controls_map.ts
-index 964bca8..09c9d73 100644
+index c53e3bb..eea3c22 100644
 --- a/examples/misc_controls_map.ts
 +++ b/examples/misc_controls_map.ts
 @@ -4,7 +4,10 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
@@ -1180,7 +1181,7 @@ index 964bca8..09c9d73 100644
  init();
  //render(); // remove when using next line for animation loop (requestAnimationFrame)
 diff --git a/examples/misc_controls_orbit.ts b/examples/misc_controls_orbit.ts
-index e2e3500..eec819f 100644
+index 63aa40c..f40a7c1 100644
 --- a/examples/misc_controls_orbit.ts
 +++ b/examples/misc_controls_orbit.ts
 @@ -2,7 +2,10 @@ import * as THREE from "three";
@@ -1196,7 +1197,7 @@ index e2e3500..eec819f 100644
  init();
  //render(); // remove when using next line for animation loop (requestAnimationFrame)
 diff --git a/examples/misc_controls_pointerlock.ts b/examples/misc_controls_pointerlock.ts
-index 53d5657..d92f352 100644
+index 993ccde..484d674 100644
 --- a/examples/misc_controls_pointerlock.ts
 +++ b/examples/misc_controls_pointerlock.ts
 @@ -2,11 +2,14 @@ import * as THREE from "three";
@@ -1261,7 +1262,7 @@ index 53d5657..d92f352 100644
  
    // vertex displacement
 diff --git a/examples/misc_controls_trackball.ts b/examples/misc_controls_trackball.ts
-index 73dece6..cfbfa2f 100644
+index 833ec6a..c679270 100644
 --- a/examples/misc_controls_trackball.ts
 +++ b/examples/misc_controls_trackball.ts
 @@ -5,7 +5,12 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
@@ -1278,7 +1279,7 @@ index 73dece6..cfbfa2f 100644
  
  const params = {
    orthographicCamera: false,
-@@ -83,7 +88,7 @@ function init() {
+@@ -84,7 +89,7 @@ function init() {
    gui
      .add(params, "orthographicCamera")
      .name("use orthographic")
@@ -1287,7 +1288,7 @@ index 73dece6..cfbfa2f 100644
        controls.dispose();
  
        createControls(value ? orthographicCamera : perspectiveCamera);
-@@ -96,7 +101,7 @@ function init() {
+@@ -97,7 +102,7 @@ function init() {
    createControls(perspectiveCamera);
  }
  
@@ -1297,7 +1298,7 @@ index 73dece6..cfbfa2f 100644
  
    controls.rotateSpeed = 1.0;
 diff --git a/examples/misc_controls_transform.ts b/examples/misc_controls_transform.ts
-index af9ed85..332ec59 100644
+index 73ff9f9..882ae39 100644
 --- a/examples/misc_controls_transform.ts
 +++ b/examples/misc_controls_transform.ts
 @@ -3,8 +3,13 @@ import * as THREE from "three";
@@ -1453,7 +1454,7 @@ index 16faad8..7ea0c1f 100644
  }
  
 diff --git a/examples/misc_exporter_draco.ts b/examples/misc_exporter_draco.ts
-index 242a6a5..eb38ce3 100644
+index ee28b4a..b148f83 100644
 --- a/examples/misc_exporter_draco.ts
 +++ b/examples/misc_exporter_draco.ts
 @@ -4,7 +4,11 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -1469,7 +1470,7 @@ index 242a6a5..eb38ce3 100644
  
  const params = {
    export: exportFile,
-@@ -114,12 +118,12 @@ const link = document.createElement("a");
+@@ -113,12 +117,12 @@ const link = document.createElement("a");
  link.style.display = "none";
  document.body.appendChild(link);
  
@@ -1485,11 +1486,11 @@ index 242a6a5..eb38ce3 100644
    save(new Blob([buffer], { type: "application/octet-stream" }), filename);
  }
 diff --git a/examples/misc_exporter_gltf.ts b/examples/misc_exporter_gltf.ts
-index 543fe0b..c0dda17 100644
+index 354f66f..8fdd8d4 100644
 --- a/examples/misc_exporter_gltf.ts
 +++ b/examples/misc_exporter_gltf.ts
-@@ -4,7 +4,7 @@ import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
- import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+@@ -6,7 +6,7 @@ import { KTX2Loader } from "three/addons/loaders/KTX2Loader.js";
+ import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
  import { GUI } from "three/addons/libs/lil-gui.module.min.js";
  
 -function exportGLTF(input) {
@@ -1497,7 +1498,7 @@ index 543fe0b..c0dda17 100644
    const gltfExporter = new GLTFExporter();
  
    const options = {
-@@ -35,7 +35,7 @@ const link = document.createElement("a");
+@@ -37,7 +37,7 @@ const link = document.createElement("a");
  link.style.display = "none";
  document.body.appendChild(link); // Firefox workaround, see #6594
  
@@ -1506,7 +1507,7 @@ index 543fe0b..c0dda17 100644
    link.href = URL.createObjectURL(blob);
    link.download = filename;
    link.click();
-@@ -43,18 +43,25 @@ function save(blob, filename) {
+@@ -45,18 +45,28 @@ function save(blob, filename) {
    // URL.revokeObjectURL( url ); breaks Firefox...
  }
  
@@ -1523,7 +1524,7 @@ index 543fe0b..c0dda17 100644
 -let container;
 -
 -let camera, object, object2, material, geometry, scene1, scene2, renderer;
--let gridHelper, sphere, model;
+-let gridHelper, sphere, model, coffeemat;
 +let container: HTMLDivElement;
 +
 +let camera: THREE.PerspectiveCamera,
@@ -1534,12 +1535,15 @@ index 543fe0b..c0dda17 100644
 +  scene1: THREE.Scene,
 +  scene2: THREE.Scene,
 +  renderer: THREE.WebGLRenderer;
-+let gridHelper: THREE.GridHelper, sphere: THREE.Mesh, model: THREE.Group;
++let gridHelper: THREE.GridHelper,
++  sphere: THREE.Mesh,
++  model: THREE.Group,
++  coffeemat: THREE.Group;
  
  const params = {
    trs: false,
 diff --git a/examples/misc_exporter_obj.ts b/examples/misc_exporter_obj.ts
-index 7dce2e5..4cdc0da 100644
+index 9c74c6b..a469035 100644
 --- a/examples/misc_exporter_obj.ts
 +++ b/examples/misc_exporter_obj.ts
 @@ -4,7 +4,9 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -1553,7 +1557,7 @@ index 7dce2e5..4cdc0da 100644
  
  const params = {
    addTriangle: addTriangle,
-@@ -71,12 +73,12 @@ function exportToObj() {
+@@ -72,12 +74,12 @@ function exportToObj() {
    saveString(result, "object.obj");
  }
  
@@ -1569,7 +1573,7 @@ index 7dce2e5..4cdc0da 100644
        scene.remove(child);
        i--;
      }
-@@ -164,13 +166,13 @@ const link = document.createElement("a");
+@@ -165,13 +167,13 @@ const link = document.createElement("a");
  link.style.display = "none";
  document.body.appendChild(link);
  
@@ -1586,7 +1590,7 @@ index 7dce2e5..4cdc0da 100644
  }
  
 diff --git a/examples/misc_exporter_ply.ts b/examples/misc_exporter_ply.ts
-index c97ac16..72776d2 100644
+index eb04754..f403ecd 100644
 --- a/examples/misc_exporter_ply.ts
 +++ b/examples/misc_exporter_ply.ts
 @@ -4,7 +4,11 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -1602,7 +1606,7 @@ index c97ac16..72776d2 100644
  
  const params = {
    exportASCII: exportASCII,
-@@ -147,16 +151,16 @@ const link = document.createElement("a");
+@@ -148,16 +152,16 @@ const link = document.createElement("a");
  link.style.display = "none";
  document.body.appendChild(link);
  
@@ -1623,7 +1627,7 @@ index c97ac16..72776d2 100644
    save(new Blob([buffer], { type: "application/octet-stream" }), filename);
  }
 diff --git a/examples/misc_exporter_stl.ts b/examples/misc_exporter_stl.ts
-index 07bd174..da48760 100644
+index 4d5ab46..bbfcbfb 100644
 --- a/examples/misc_exporter_stl.ts
 +++ b/examples/misc_exporter_stl.ts
 @@ -4,7 +4,11 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -1639,7 +1643,7 @@ index 07bd174..da48760 100644
  
  const params = {
    exportASCII: exportASCII,
-@@ -120,16 +124,16 @@ const link = document.createElement("a");
+@@ -121,16 +125,16 @@ const link = document.createElement("a");
  link.style.display = "none";
  document.body.appendChild(link);
  
@@ -1660,7 +1664,7 @@ index 07bd174..da48760 100644
    save(new Blob([buffer], { type: "application/octet-stream" }), filename);
  }
 diff --git a/examples/misc_exporter_usdz.ts b/examples/misc_exporter_usdz.ts
-index 3a57502..9cf134e 100644
+index 833b4f0..8ee7a60 100644
 --- a/examples/misc_exporter_usdz.ts
 +++ b/examples/misc_exporter_usdz.ts
 @@ -6,7 +6,9 @@ import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
@@ -1674,7 +1678,7 @@ index 3a57502..9cf134e 100644
  
  init();
  render();
-@@ -53,7 +55,7 @@ function init() {
+@@ -54,7 +56,7 @@ function init() {
      const arraybuffer = await exporter.parse(gltf.scene);
      const blob = new Blob([arraybuffer], { type: "application/octet-stream" });
  
@@ -1683,7 +1687,7 @@ index 3a57502..9cf134e 100644
      link.href = URL.createObjectURL(blob);
    });
  
-@@ -72,7 +74,7 @@ function createSpotShadowMesh() {
+@@ -73,7 +75,7 @@ function createSpotShadowMesh() {
    canvas.width = 128;
    canvas.height = 128;
  
@@ -1693,7 +1697,7 @@ index 3a57502..9cf134e 100644
      canvas.width / 2,
      canvas.height / 2,
 diff --git a/examples/misc_lookat.ts b/examples/misc_lookat.ts
-index e450cc3..2085afe 100644
+index ddb6f6a..cc7d0f1 100644
 --- a/examples/misc_lookat.ts
 +++ b/examples/misc_lookat.ts
 @@ -2,9 +2,12 @@ import * as THREE from "three";
@@ -1711,7 +1715,7 @@ index e450cc3..2085afe 100644
  
  let mouseX = 0,
    mouseY = 0;
-@@ -72,7 +75,7 @@ function onWindowResize() {
+@@ -73,7 +76,7 @@ function onWindowResize() {
    renderer.setSize(window.innerWidth, window.innerHeight);
  }
  

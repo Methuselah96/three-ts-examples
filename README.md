@@ -10,9 +10,11 @@
 # Update sources
 
 - `node index.js`
+- Commit changes
 - `git apply --reject changes.patch`
 - Fix conflicts
 - `yarn run type-check`
 - `git diff > ../changes.patch`
 - Reset changes
 - Copy patch file
+- Commit changes
