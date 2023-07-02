@@ -1697,3 +1697,55 @@ index e7221f3..5e3ed6e 100644
  
      node.appendChild(doc.documentElement);
  
+diff --git a/examples/webaudio_orientation.ts b/examples/webaudio_orientation.ts
+index d265822..c967b7d 100644
+--- a/examples/webaudio_orientation.ts
++++ b/examples/webaudio_orientation.ts
+@@ -4,16 +4,18 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+ import { PositionalAudioHelper } from "three/addons/helpers/PositionalAudioHelper.js";
+ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+ 
+-let scene, camera, renderer;
++let scene: THREE.Scene,
++  camera: THREE.PerspectiveCamera,
++  renderer: THREE.WebGLRenderer;
+ 
+-const startButton = document.getElementById("startButton");
++const startButton = document.getElementById("startButton")!;
+ startButton.addEventListener("click", init);
+ 
+ function init() {
+-  const overlay = document.getElementById("overlay");
++  const overlay = document.getElementById("overlay")!;
+   overlay.remove();
+ 
+-  const container = document.getElementById("container");
++  const container = document.getElementById("container")!;
+ 
+   //
+ 
+@@ -70,7 +72,7 @@ function init() {
+   const listener = new THREE.AudioListener();
+   camera.add(listener);
+ 
+-  const audioElement = document.getElementById("music");
++  const audioElement = document.getElementById("music") as HTMLAudioElement;
+   audioElement.play();
+ 
+   const positionalAudio = new THREE.PositionalAudio(listener);
+@@ -90,10 +92,11 @@ function init() {
+     boomBox.scale.set(20, 20, 20);
+ 
+     boomBox.traverse(function (object) {
+-      if (object.isMesh) {
+-        object.material.envMap = reflectionCube;
+-        object.geometry.rotateY(-Math.PI);
+-        object.castShadow = true;
++      if ((object as THREE.Mesh).isMesh) {
++        ((object as THREE.Mesh).material as THREE.MeshStandardMaterial).envMap =
++          reflectionCube;
++        (object as THREE.Mesh).geometry.rotateY(-Math.PI);
++        (object as THREE.Mesh).castShadow = true;
+       }
+     });
+ 
