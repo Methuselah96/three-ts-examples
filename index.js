@@ -16,7 +16,8 @@ for (const file of files) {
   if (
     !file.endsWith(".html") ||
     file === "index.html" ||
-    file === "webgl_multiple_elements_text.html"
+    file === "webgl_multiple_elements_text.html" ||
+    file.startsWith("physics_ammo")
   )
     continue;
 
@@ -33,5 +34,5 @@ for (const file of files) {
 
   index++;
 
-  if (index > 26) break;
+  if (index > 27) break;
 }
