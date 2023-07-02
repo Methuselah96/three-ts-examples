@@ -1651,3 +1651,49 @@ index badcf87..6662ad4 100644
  
  init();
  animate();
+diff --git a/examples/svg_sandbox.ts b/examples/svg_sandbox.ts
+index e7221f3..5e3ed6e 100644
+--- a/examples/svg_sandbox.ts
++++ b/examples/svg_sandbox.ts
+@@ -6,9 +6,12 @@ import { SVGRenderer, SVGObject } from "three/addons/renderers/SVGRenderer.js";
+ 
+ THREE.ColorManagement.enabled = false;
+ 
+-let camera, scene, renderer, stats;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: SVGRenderer,
++  stats: Stats;
+ 
+-let group;
++let group: THREE.Mesh;
+ 
+ init();
+ animate();
+@@ -41,7 +44,7 @@ function init() {
+ 
+   const boxGeometry = new THREE.BoxGeometry(100, 100, 100);
+ 
+-  let mesh = new THREE.Mesh(
++  let mesh: THREE.Mesh = new THREE.Mesh(
+     boxGeometry,
+     new THREE.MeshBasicMaterial({
+       color: 0x0000ff,
+@@ -181,7 +184,7 @@ function init() {
+   node.setAttribute("r", "40");
+ 
+   for (let i = 0; i < 50; i++) {
+-    const object = new SVGObject(node.cloneNode());
++    const object = new SVGObject(node.cloneNode() as SVGCircleElement);
+     object.position.x = Math.random() * 1000 - 500;
+     object.position.y = Math.random() * 1000 - 500;
+     object.position.z = Math.random() * 1000 - 500;
+@@ -194,7 +197,7 @@ function init() {
+   fileLoader.load("models/svg/hexagon.svg", function (svg) {
+     const node = document.createElementNS("http://www.w3.org/2000/svg", "g");
+     const parser = new DOMParser();
+-    const doc = parser.parseFromString(svg, "image/svg+xml");
++    const doc = parser.parseFromString(svg as string, "image/svg+xml");
+ 
+     node.appendChild(doc.documentElement);
+ 
