@@ -34,5 +34,5 @@ for (const file of files) {
 
   index++;
 
-  if (index > 29) break;
+  if (index > 30) break;
 }
