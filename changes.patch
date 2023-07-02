@@ -1638,3 +1638,16 @@ index 0976b54..347da19 100644
  
  init();
  
+diff --git a/examples/svg_lines.ts b/examples/svg_lines.ts
+index badcf87..6662ad4 100644
+--- a/examples/svg_lines.ts
++++ b/examples/svg_lines.ts
+@@ -4,7 +4,7 @@ import { SVGRenderer } from "three/addons/renderers/SVGRenderer.js";
+ 
+ THREE.ColorManagement.enabled = false;
+ 
+-let camera, scene, renderer;
++let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: SVGRenderer;
+ 
+ init();
+ animate();
