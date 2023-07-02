@@ -1611,3 +1611,30 @@ index 6dd3fbf..39c2ce2 100644
    const d = document.createElement("div");
  
    d.innerHTML = "<h3>" + name + "</h3>";
+diff --git a/examples/physics_rapier_instancing.ts b/examples/physics_rapier_instancing.ts
+index 0976b54..347da19 100644
+--- a/examples/physics_rapier_instancing.ts
++++ b/examples/physics_rapier_instancing.ts
+@@ -1,12 +1,18 @@
+ import * as THREE from "three";
+ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+-import { RapierPhysics } from "three/addons/physics/RapierPhysics.js";
++import {
++  RapierPhysics,
++  RapierPhysicsObject,
++} from "three/addons/physics/RapierPhysics.js";
+ import Stats from "three/addons/libs/stats.module.js";
+ 
+-let camera, scene, renderer, stats;
+-let physics, position;
++let camera: THREE.PerspectiveCamera,
++  scene: THREE.Scene,
++  renderer: THREE.WebGLRenderer,
++  stats: Stats;
++let physics: RapierPhysicsObject, position: THREE.Vector3;
+ 
+-let boxes, spheres;
++let boxes: THREE.InstancedMesh, spheres: THREE.InstancedMesh;
+ 
+ init();
+ 
